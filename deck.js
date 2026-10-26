@@ -1,3 +1,5 @@
+// Nove slides finais, revisados com o mesmo tom de chocolate e o novo encerramento.
+const SLIDE_IMAGES = Array.from({length:9}, (_,i) => `./slides/slide-${String(i+1).padStart(2,'0')}.webp`);
 const SLIDES = [
   {
     id: 1,
@@ -315,6 +317,11 @@ const card=(title,desc,img,alt,small='',tail='')=>`<article class="item-card">${
 const heading=(s)=>`<div class="heading"><span class="eyebrow">${esc(s.kicker)}</span><h1>${esc(s.title)} <em>${esc(s.italic)}</em></h1></div>`;
 const caption=(s)=>`<div class="slide-bottom"><span>${esc(s.label)}</span><b>${String(s.id).padStart(2,'0')} <i>/ ${String(SLIDES.length).padStart(2,'0')}</i></b></div>`;
 function renderContent(s){
+  const src = SLIDE_IMAGES[s.id-1];
+  const alt = `Slide ${s.id} de ${SLIDES.length}: ${s.title} ${s.italic || ''}. ${s.lead || ''}`;
+  return `<div class="slide-image"><img src="${esc(src)}" alt="${esc(alt)}" loading="eager" decoding="async" draggable="false" width="1672" height="941"></div>`;
+}
+function renderOriginalContent(s){
   switch(s.kind){
     case 'cover': return `<div class="cover-grid"><div class="cover-copy">${heading(s)}<p class="lead">${esc(s.lead)}</p><p class="support">Uma proposta para a pizzaria: acolher o cliente no salão, com conforto e opções claras, sem atrasar a pizza.</p></div><div class="hero-photo">${photo(s.image,s.imageAlt,'full')}<span>Porções pequenas, para a espera.</span></div></div>${caption(s)}`;
     case 'moments': return `${heading(s)}<div class="cards cards-2 moments">${MOMENT_CARDS.map(x=>card(x.title,x.body,x.image,x.alt,x.kicker,'Exemplo: '+x.example)).join('')}</div><p class="bottom-line">${esc(s.lead)}</p>${caption(s)}`;
@@ -349,7 +356,7 @@ function prev(){go(index-1)}
 function toggleFullscreen(){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.().catch(()=>{});}
 function drawSpeaker(){let s=SLIDES[index]; speechContent.innerHTML=`<strong>${esc(s.label)} · ${esc(s.title)} ${esc(s.italic??'')}</strong><ol>${s.speech.map(x=>`<li>${x.speaker?`<b>${esc(x.speaker)}: </b>`:''}${esc(x.text)}</li>`).join('')}</ol>${s.gesture?`<p><b>Gesto sugerido:</b> ${esc(s.gesture)}</p>`:''}`;}
 function toggleSpeaker(){speakerOpen=!speakerOpen;speaker.hidden=!speakerOpen;$('#notes').setAttribute('aria-pressed',String(speakerOpen));if(speakerOpen)drawSpeaker()}
-function drawOverview(){overview.innerHTML=SLIDES.map((s,i)=>`<button type="button" data-slide="${i}" class="overview-item ${i===index?'active':''}">${photo(s.image,s.imageAlt,'overview-image')}<span><b>${String(s.id).padStart(2,'0')}</b> ${esc(s.title)} ${esc(s.italic??'')}</span></button>`).join('');}
+function drawOverview(){overview.innerHTML=SLIDES.map((s,i)=>`<button type="button" data-slide="${i}" class="overview-item ${i===index?'active':''}">${photo(SLIDE_IMAGES[i], `Slide ${s.id}: ${s.title}`,'overview-image')}<span><b>${String(s.id).padStart(2,'0')}</b> ${esc(s.title)} ${esc(s.italic??'')}</span></button>`).join('');}
 function toggleOverview(){overviewOpen=!overviewOpen;overview.hidden=!overviewOpen;$('#grid').setAttribute('aria-pressed',String(overviewOpen));if(overviewOpen)drawOverview()}
 $('#prev').addEventListener('click',prev);$('#next').addEventListener('click',next);
 $('#fullscreen').addEventListener('click',toggleFullscreen);

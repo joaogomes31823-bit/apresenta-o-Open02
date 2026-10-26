@@ -1,24 +1,17 @@
-# Petiscos na espera
+# Petiscos na espera — apresentação completa
 
-Apresentação interativa completa (9 slides), adaptada do projeto original do ZIP fornecido pelo autor.
+Site estático com os 9 slides finais, design padronizado em gradiente chocolate e apresentação navegável. O slide 9 mostra o novo agradecimento com a foto da mesa de restaurante.
 
-## Publicar
+## Navegação
 
-Este repositório contém um site estático pronto para GitHub Pages.
-
-Em **Settings > Pages > Build and deployment** selecione **Deploy from a branch**, branch **main**, pasta **/(root)**, e salve.
-
-O site ficará em: `https://joaogomes31823-bit.github.io/apresenta-o-Open02/`
-
-## Recursos
-
-- 9 slides em português, com imagens originais otimizadas
-- Botões Anterior/Próximo e navegação por teclado e toque
-- Modo tela cheia, visão geral de slides, roteiro de fala e gestos
-- Layout responsivo com proporção de apresentação e animações acessíveis
+Abra `index.html` e use as teclas **← / →**, **Page Up / Page Down** ou **barra de espaço** para navegar, sem botões visíveis. **Home / End** vão ao primeiro e ao último slide; **F** abre tela cheia; **S** abre notas do apresentador; **N** abre a visão geral. No celular, deslize horizontalmente sobre o slide.
 
 ## Estrutura
 
-`index.html` — entrada. `style.css` — estilos. `deck.js` — textos, roteiros e navegação. `images/` — fotografias da apresentação.
+- `index.html` — página inicial da apresentação.
+- `deck.js` — navegação, roteiro do apresentador e índice de slides.
+- `style.css` — aparência responsiva.
+- `slides/slide-01.webp` até `slides/slide-09.webp` — slides finais renderizados.
+- `images/` — fotografias originais preservadas como arquivos auxiliares.
 
-Todos os caminhos são relativos para funcionar no subdiretório do GitHub Pages.
+O site é publicado automaticamente pelo GitHub Actions + GitHub Pages a cada atualização da branch `main`.

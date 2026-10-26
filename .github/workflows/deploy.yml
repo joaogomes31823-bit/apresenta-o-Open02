@@ -1,0 +1,38 @@
+name: Publicar apresentação no GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar apresentação
+        uses: actions/checkout@v4
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Preparar arquivos
+        run: |
+          mkdir -p _site
+          cp index.html deck.js style.css README.md _site/
+          cp -R images _site/
+          touch _site/.nojekyll
+      - name: Enviar arquivos estáticos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publicar página
+        id: deployment
+        uses: actions/deploy-pages@v4

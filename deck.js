@@ -1,3 +1,5 @@
+// Petiscos na espera — navegação, slides acessíveis e roteiro.
+// Conteúdo editorial e notas dos nove slides preservados do projeto aprovado.
 // Nove slides finais, revisados com o mesmo tom de chocolate e o novo encerramento.
 const SLIDE_IMAGES = Array.from({length:9}, (_,i) => `./slides/slide-${String(i+1).padStart(2,'0')}.webp`);
 const SLIDES = [
@@ -47,7 +49,7 @@ const SLIDES = [
     imageAlt: "Pão de alho gratinado",
     speech: [
       {
-        text: "O que oferecer: um cardápio curto e simples, com porções pequenas, fáceis de compartilhar. Petiscos: pão de alho, bruschettas e bolinhos de queijo. Bebidas sem álcool: água, sucos e refrigerantes.",
+        text: "O que oferecer: um cardápio curto e simples, com porções pequenas, fáceis de compartilhar. Petiscos: pão de alho, bruschettas e bolinhos de queijo. Bebidas sem álcool: água, sucos e refrigerantes. O slide também menciona uma opção para adultos, sob consulta.",
       },
     ],
     gesture: "Mostre o cardápio com as duas mãos, na altura do peito, e deixe o cliente ler em silêncio.",
@@ -163,225 +165,158 @@ const SLIDES = [
   },
 ];
 
-const MENU_ITEMS = [
-  {
-    name: "Pão de alho",
-    note: "Porção para compartilhar",
-    image: "./images/pao-de-alho.webp",
-    alt: "Pão de alho gratinado",
-  },
-  {
-    name: "Bruschettas",
-    note: "Tomate, manjericão e azeite",
-    image: "./images/bruschetta.webp",
-    alt: "Bruschettas de tomate",
-  },
-  {
-    name: "Bolinhos de queijo",
-    note: "Crocantes, servidos quentes",
-    image: "./images/bolinhos.webp",
-    alt: "Bolinhos de queijo",
-  },
-];
-
-const MOMENT_CARDS = [
-  {
-    kicker: "Antes de pedir",
-    tone: "olive",
-    title: "Ainda escolhe",
-    body: "O cliente aguarda atendimento ou ainda está escolhendo o pedido.",
-    example: "Duas pessoas chegam e esperam uma mesa.",
-    image: "./images/escolher.webp",
-    alt: "Casal escolhendo o pedido à mesa",
-  },
-  {
-    kicker: "Depois de pedir",
-    tone: "primary",
-    title: "Pizza no forno",
-    body: "O pedido já foi feito e o cliente espera a pizza ficar pronta.",
-    example: "Uma família aguarda a pizza no salão.",
-    image: "./images/pizza.webp",
-    alt: "Pizza saindo do forno a lenha",
-  },
-];
-
-const ORGANIZE_POINTS = [
-  {
-    n: "01",
-    title: "Espaço",
-    body: "Assentos e mesa de apoio, com a passagem livre.",
-    example: "Um canto próximo à recepção.",
-    image: "./images/canto.webp",
-    alt: "Canto de espera com cadeiras e mesa de apoio",
-  },
-  {
-    n: "02",
-    title: "Cardápio",
-    body: "Poucas opções, com preços ou cortesia informados.",
-    example: "Um cardápio com três petiscos.",
-    image: "./images/cover.webp",
-    alt: "Petiscos da casa",
-  },
-  {
-    n: "03",
-    title: "Equipe",
-    body: "Definir quem recebe, informa e serve os petiscos.",
-    example: "Combinar funções antes de abrir.",
-    image: "./images/equipe.webp",
-    alt: "Atendente da pizzaria no balcão",
-  },
-];
-
-const SERVICE_STEPS = [
-  {
-    n: "1",
-    title: "Acolher",
-    body: "Cumprimentar e identificar se o cliente vai pedir ou está aguardando a pizza.",
-    image: "./images/acolher.webp",
-    alt: "Atendente recebendo clientes na entrada",
-  },
-  {
-    n: "2",
-    title: "Informar",
-    body: "Consultar a previsão de espera e mostrar as opções, com os valores claros.",
-    image: "./images/informar.webp",
-    alt: "Atendente mostrando as opções de petiscos",
-  },
-  {
-    n: "3",
-    title: "Confirmar",
-    body: "Ouvir a escolha, confirmar os itens e servir apenas o que foi solicitado.",
-    image: "./images/confirmar.webp",
-    alt: "Atendente confirmando o pedido à mesa",
-  },
-  {
-    n: "4",
-    title: "Acompanhar",
-    body: "Atualizar o cliente e avisar quando o pedido estiver pronto.",
-    image: "./images/acompanhar.webp",
-    alt: "Atendente atualizando a mesa sobre a pizza",
-  },
-];
-
-const CARE_ROWS = [
-  {
-    situation: "O cliente não quer consumir.",
-    action: "Respeitar a escolha e manter o atendimento.",
-    line: "Sem problema! Fiquem à vontade.",
-    image: "./images/respeitar.webp",
-    alt: "Atendente respeitando a escolha dos clientes",
-  },
-  {
-    situation: "A pizza está atrasada.",
-    action: "Conferir a situação e atualizar a previsão.",
-    line: "Vou verificar o pedido e trazer uma posição.",
-    image: "./images/atraso.webp",
-    alt: "Atendente conferindo a pizza no forno",
-  },
-  {
-    situation: "O espaço está cheio.",
-    action: "Organizar a espera e manter a passagem livre.",
-    line: "Vou conferir um lugar para vocês aguardarem.",
-    image: "./images/cheio.webp",
-    alt: "Salão cheio com a equipe organizando a espera",
-  },
-];
-
-const SHORTCUTS = [
-  { keys: "← →", label: "Slide anterior e próximo" },
-  { keys: "Espaço", label: "Avançar" },
-  { keys: "N", label: "Visão de todos os slides" },
-  { keys: "S", label: "Fala + gesto" },
-  { keys: "F", label: "Tela cheia" },
-  { keys: "D", label: "Visual 4D" },
-  { keys: "R", label: "Roteiro do slide" },
-  { keys: "?", label: "Atalhos" },
-];
-
-
-const $=(sel,root=document)=>root.querySelector(sel);
-const slideContainer=$('#slide-content');
-const slidesMeta=$('#slide-counter');
-const status=$('#slide-status');
-const progress=$('#progress');
-const overview=$('#overview');
-const speaker=$('#speaker');
-const speechContent=$('#speech-content');
-let index=0;
-let overviewOpen=false;
-let speakerOpen=false;
-let focusMode=false;
-const esc=(v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const photo=(src,alt,cls='')=>`<div class="photo ${cls}"><img loading="eager" src="${esc(src)}" alt="${esc(alt)}"></div>`;
-const card=(title,desc,img,alt,small='',tail='')=>`<article class="item-card">${photo(img,alt,'card-photo')}<div class="card-copy">${small?`<span class="eyebrow small">${esc(small)}</span>`:''}<h2>${esc(title)}</h2><p>${esc(desc)}</p>${tail?`<p class="card-tail">${esc(tail)}</p>`:''}</div></article>`;
-const heading=(s)=>`<div class="heading"><span class="eyebrow">${esc(s.kicker)}</span><h1>${esc(s.title)} <em>${esc(s.italic)}</em></h1></div>`;
-const caption=(s)=>`<div class="slide-bottom"><span>${esc(s.label)}</span><b>${String(s.id).padStart(2,'0')} <i>/ ${String(SLIDES.length).padStart(2,'0')}</i></b></div>`;
-function renderContent(s){
-  const src = SLIDE_IMAGES[s.id-1];
-  const alt = `Slide ${s.id} de ${SLIDES.length}: ${s.title} ${s.italic || ''}. ${s.lead || ''}`;
-  return `<div class="slide-image"><img src="${esc(src)}" alt="${esc(alt)}" loading="eager" decoding="async" draggable="false" width="1672" height="941"></div>`;
-}
-function renderOriginalContent(s){
-  switch(s.kind){
-    case 'cover': return `<div class="cover-grid"><div class="cover-copy">${heading(s)}<p class="lead">${esc(s.lead)}</p><p class="support">Uma proposta para a pizzaria: acolher o cliente no salão, com conforto e opções claras, sem atrasar a pizza.</p></div><div class="hero-photo">${photo(s.image,s.imageAlt,'full')}<span>Porções pequenas, para a espera.</span></div></div>${caption(s)}`;
-    case 'moments': return `${heading(s)}<div class="cards cards-2 moments">${MOMENT_CARDS.map(x=>card(x.title,x.body,x.image,x.alt,x.kicker,'Exemplo: '+x.example)).join('')}</div><p class="bottom-line">${esc(s.lead)}</p>${caption(s)}`;
-    case 'menu': return `${heading(s)}<div class="cards cards-3 menu">${MENU_ITEMS.map(x=>card(x.name,x.note,x.image,x.alt)).join('')}</div><div class="menu-foot"><span>BÉBIDAS</span> Água · sucos · refrigerantes</div>${caption(s)}`;
-    case 'organize': return `${heading(s)}<div class="cards cards-3 organize">${ORGANIZE_POINTS.map(x=>card(x.title,x.body,x.image,x.alt,x.n,'Exemplo: '+x.example)).join('')}</div><p class="bottom-line">${esc(s.lead)}</p>${caption(s)}`;
-    case 'steps': return `${heading(s)}<div class="steps-grid">${SERVICE_STEPS.map(x=>`<article class="step-card">${photo(x.image,x.alt,'step-photo')}<div class="step-copy"><span class="step-n">${x.n}</span><h2>${esc(x.title)}</h2><p>${esc(x.body)}</p></div></article>`).join('')}</div><p class="bottom-line strong">${esc(s.lead)}</p>${caption(s)}`;
-    case 'scene': return `<div class="scene-layout">${photo(s.image,s.imageAlt,'scene-photo')}<div class="scene-info">${heading(s)}<p class="scene-lead">${esc(s.lead)}</p><div class="dialog">${s.speech.map(x=>`<div class="dialog-row"><span class="eyebrow small">${esc(x.speaker)}</span><p>“${esc(x.text)}”</p></div>`).join('')}</div></div></div>${caption(s)}`;
-    case 'care': return `${heading(s)}<div class="cards cards-3 care">${CARE_ROWS.map(x=>card(x.situation,x.action,x.image,x.alt,'SITUAÇÃO','“'+x.line+'”')).join('')}</div><p class="bottom-line">${esc(s.lead)}</p>${caption(s)}`;
-    case 'thanks': return `<div class="thanks-back">${photo(s.image,s.imageAlt,'full')}<div class="thanks-over"></div><div class="thanks-text"><p>Petiscos na espera</p><h1>${esc(s.title)}</h1><em>${esc(s.italic)}</em></div></div>`;
-    default:return '';
+(function runtime(){
+  "use strict";
+  const $=(selector,root=document)=>root.querySelector(selector);
+  const stage=$("#stage");
+  const container=$("#slide-content");
+  const status=$("#slide-status");
+  const notes=$("#speaker");
+  const notesBody=$("#speech-content");
+  const overview=$("#overview");
+  const overviewList=$("#overview-list");
+  const help=$("#shortcuts");
+  const esc=(v)=>String(v==null?"":v).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const details={
+    2:"Dois momentos: antes de pedir, o cliente aguarda atendimento ou escolhe o pedido. Exemplo: duas pessoas esperam uma mesa. Depois de pedir, o cliente já fez o pedido e aguarda a pizza. Exemplo: família aguardando no salão. A proposta combina conforto, informação sobre o pedido e consumo opcional.",
+    3:"Cardápio curto e simples: pão de alho, porção para compartilhar; bruschettas com tomate, manjericão e azeite; bolinhos de queijo, crocantes e servidos quentes. Bebidas sem álcool: água, sucos e refrigerantes. Há também uma indicação de opção para adultos sob consulta. Porções pequenas e consumo opcional.",
+    4:"Organizar três pontos. Primeiro, espaço: assentos e mesa de apoio com passagem livre; exemplo: canto próximo à recepção. Segundo, cardápio: poucas opções com preços ou cortesia informados; exemplo: três petiscos. Terceiro, equipe: definir quem recebe, informa e serve os petiscos. Começar com a estrutura disponível e ajustar após o primeiro teste.",
+    6:"Cena 1: o cliente ainda vai pedir. Duas pessoas chegaram e estão esperando atendimento. A atendente indica o lugar. Atendente: Boa noite! Vocês podem aguardar aqui. Atendente: Enquanto escolhem a pizza, querem conhecer os petiscos? Cliente: Pode mostrar o cardápio, por favor.",
+    7:"Cena 2: a pizza está no preparo. A família já pediu e quer saber como está a pizza. Cliente: Nossa pizza ainda vai demorar? Atendente: Vou conferir com a cozinha e já aviso vocês. Atendente: A pizza está no preparo. Querem ver as opções de petiscos?",
+    9:"Obrigado pela atenção de todos. Sabores que conectam. Fotografia de uma mesa de restaurante com pão, taças e iluminação aconchegante."
+  };
+  const steps=[
+    {n:1,name:"Acolher",body:"Receber o cliente e entender em qual momento da espera ele está.",image:"./images/acolher.webp",alt:"Atendente recebendo clientes na pizzaria"},
+    {n:2,name:"Informar",body:"Consultar a previsão e apresentar as opções com valores claros.",image:"./images/informar.webp",alt:"Atendente mostrando opções do cardápio"},
+    {n:3,name:"Confirmar",body:"Ouvir a escolha e servir somente os itens solicitados.",image:"./images/confirmar.webp",alt:"Atendente registrando o pedido"},
+    {n:4,name:"Acompanhar",body:"Atualizar o cliente e avisar quando a pizza estiver pronta.",image:"./images/acompanhar.webp",alt:"Atendente acompanhando o pedido na mesa"}
+  ];
+  const cases=[
+    {title:"Cliente não quer consumir",action:"Respeitar a escolha.",quote:"Sem problema! Fiquem à vontade.",image:"./images/respeitar.webp",alt:"Equipe atendendo clientes à mesa"},
+    {title:"Pizza atrasada",action:"Conferir a situação e atualizar a previsão.",quote:"Vou verificar o pedido e trazer uma posição.",image:"./images/atraso.webp",alt:"Equipe acompanhando o preparo da pizza"},
+    {title:"Espaço cheio",action:"Organizar a espera e manter a passagem livre.",quote:"Vou conferir um lugar para vocês aguardarem.",image:"./images/cheio.webp",alt:"Equipe organizando a espera na pizzaria"}
+  ];
+  function cover(){
+    return `<article class="design-slide slide-cover" aria-labelledby="cover-title">
+      <div class="cover-copy"><p class="slide-kicker">Inovação no atendimento</p>
+      <h1 id="cover-title">Petiscos <em>na espera</em></h1>
+      <p class="cover-lead">Acolhimento que começa antes da pizza chegar.</p>
+      <p class="cover-support">Petiscos opcionais, informação clara e conforto para quem aguarda.</p>
+      <div class="slide-foot"><span>A proposta</span><strong>01 / 09</strong></div></div>
+      <figure class="cover-picture"><img src="./images/cover.webp" alt="Pão de alho, bruschettas e bolinhos de queijo sobre uma mesa de madeira" decoding="async">
+      <figcaption>Pequenos cuidados fazem a espera valer mais.</figcaption></figure>
+    </article>`;
   }
-}
-function draw(){
- const s=SLIDES[index];
- slideContainer.classList.remove('animate');
- slideContainer.innerHTML=renderContent(s);
- void slideContainer.offsetWidth;
- slideContainer.classList.add('animate');
- slidesMeta.textContent=`${String(s.id).padStart(2,'0')} / ${String(SLIDES.length).padStart(2,'0')}`;
- status.textContent=`Slide ${s.id} de ${SLIDES.length}: ${s.title} ${s.italic??''}`;
- progress.style.width=`${(s.id/SLIDES.length)*100}%`;
- $('#prev').disabled=index===0;
- $('#next').disabled=index===SLIDES.length-1;
- window.history.replaceState(null,'',`#${s.id}`);
- try{localStorage.setItem('petiscos-deck-index',index)}catch{}
- if(speakerOpen)drawSpeaker();
- if(overviewOpen)drawOverview();
-}
-function go(n){index=Math.max(0,Math.min(SLIDES.length-1,n));draw()}
-function next(){go(index+1)}
-function prev(){go(index-1)}
-function toggleFullscreen(){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.().catch(()=>{});}
-function drawSpeaker(){let s=SLIDES[index]; speechContent.innerHTML=`<strong>${esc(s.label)} · ${esc(s.title)} ${esc(s.italic??'')}</strong><ol>${s.speech.map(x=>`<li>${x.speaker?`<b>${esc(x.speaker)}: </b>`:''}${esc(x.text)}</li>`).join('')}</ol>${s.gesture?`<p><b>Gesto sugerido:</b> ${esc(s.gesture)}</p>`:''}`;}
-function toggleSpeaker(){speakerOpen=!speakerOpen;speaker.hidden=!speakerOpen;$('#notes').setAttribute('aria-pressed',String(speakerOpen));if(speakerOpen)drawSpeaker()}
-function drawOverview(){overview.innerHTML=SLIDES.map((s,i)=>`<button type="button" data-slide="${i}" class="overview-item ${i===index?'active':''}">${photo(SLIDE_IMAGES[i], `Slide ${s.id}: ${s.title}`,'overview-image')}<span><b>${String(s.id).padStart(2,'0')}</b> ${esc(s.title)} ${esc(s.italic??'')}</span></button>`).join('');}
-function toggleOverview(){overviewOpen=!overviewOpen;overview.hidden=!overviewOpen;$('#grid').setAttribute('aria-pressed',String(overviewOpen));if(overviewOpen)drawOverview()}
-$('#prev').addEventListener('click',prev);$('#next').addEventListener('click',next);
-$('#fullscreen').addEventListener('click',toggleFullscreen);
-$('#notes').addEventListener('click',toggleSpeaker);
-$('#grid').addEventListener('click',toggleOverview);
-$('#close-notes').addEventListener('click',toggleSpeaker);
-$('#close-overview').addEventListener('click',toggleOverview);
-$('#help').addEventListener('click',()=>$('#shortcuts').showModal());
-$('#close-help').addEventListener('click',()=>$('#shortcuts').close());
-overview.addEventListener('click',e=>{const b=e.target.closest('[data-slide]');if(!b)return;go(Number(b.dataset.slide));toggleOverview()});
-window.addEventListener('keydown',e=>{
- if(e.altKey||e.ctrlKey||e.metaKey)return;
- if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
- else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();prev()}
- else if(e.key==='Home'){e.preventDefault();go(0)}
- else if(e.key==='End'){e.preventDefault();go(SLIDES.length-1)}
- else if(e.key.toLowerCase()==='f')toggleFullscreen();
- else if(e.key.toLowerCase()==='s'||e.key.toLowerCase()==='r')toggleSpeaker();
- else if(e.key.toLowerCase()==='n')toggleOverview();
- else if(e.key==='?')$('#shortcuts').showModal();
- else if(e.key==='Escape'){if(overviewOpen)toggleOverview();if(speakerOpen)toggleSpeaker();}
-});
-let start=null;
-$('#stage').addEventListener('touchstart',e=>start=e.changedTouches[0].clientX,{passive:true});
-$('#stage').addEventListener('touchend',e=>{if(start===null)return;let dx=e.changedTouches[0].clientX-start;if(Math.abs(dx)>55)dx<0?next():prev();start=null},{passive:true});
-window.addEventListener('hashchange',()=>{const n=Number(location.hash.slice(1));if(n>=1&&n<=SLIDES.length&&n!==index+1)go(n-1)});
-const startHash=Number(location.hash.slice(1));let saved=0;try{saved=Number(localStorage.getItem('petiscos-deck-index'))||0}catch{}
-index=startHash>=1&&startHash<=SLIDES.length?startHash-1:Math.max(0,Math.min(saved,SLIDES.length-1));draw();
+  function service(){
+    return `<section class="design-slide slide-service" aria-labelledby="service-title">
+      <div class="slide-heading"><div><p class="slide-kicker">O serviço</p><h1 id="service-title">Da chegada <em>à entrega</em></h1></div>
+      <p>Quatro atitudes para tornar a espera mais acolhedora.</p></div>
+      <div class="service-grid">${steps.map(x=>`<article class="service-card">
+        <img src="${esc(x.image)}" alt="${esc(x.alt)}" loading="eager" decoding="async">
+        <div class="service-copy"><h2><span>${x.n}</span>${esc(x.name)}</h2><p>${esc(x.body)}</p></div>
+      </article>`).join("")}</div>
+      <div class="slide-footer"><p>A pizza continua sendo a prioridade. Os petiscos não devem aumentar a demora.</p><strong>05 / 09</strong></div>
+    </section>`;
+  }
+  function care(){
+    return `<section class="design-slide slide-care" aria-labelledby="care-title">
+      <div class="slide-heading"><div><p class="slide-kicker">Dia a dia</p><h1 id="care-title">Três situações <em>do salão</em></h1></div>
+      <p>Responder com respeito, organização e informações reais.</p></div>
+      <div class="care-grid">${cases.map(x=>`<article class="care-card">
+        <img src="${esc(x.image)}" alt="${esc(x.alt)}" loading="eager" decoding="async">
+        <div class="care-copy"><h2>${esc(x.title)}</h2><p>${esc(x.action)}</p><blockquote>“${esc(x.quote)}”</blockquote></div>
+      </article>`).join("")}</div>
+      <div class="slide-footer"><p>Nunca prometer um prazo não confirmado nem cobrar sem informar o preço.</p><strong>08 / 09</strong></div>
+    </section>`;
+  }
+  function raster(slide){
+    return `<div class="slide-image"><img src="${esc(SLIDE_IMAGES[slide.id-1])}" width="1672" height="941" alt="${esc(`Slide ${slide.id} de ${SLIDES.length}: ${slide.title} ${slide.italic||""}. ${details[slide.id]||slide.lead||""}`)}" decoding="async" draggable="false"></div>`;
+  }
+  let current=0;
+  let notesOpen=false;
+  let overviewOpen=false;
+  function focusStage(){stage.focus({preventScroll:true});}
+  function writeNotes(){
+    const s=SLIDES[current];
+    notesBody.innerHTML=`<h3>${esc(s.label)} — ${esc(s.title)} ${esc(s.italic||"")}</h3><ol>${s.speech.map(line=>`<li>${line.speaker?`<b>${esc(line.speaker)}:</b> `:""}${esc(line.text)}</li>`).join("")}</ol>${s.gesture?`<p><b>Gesto sugerido:</b> ${esc(s.gesture)}</p>`:""}`;
+  }
+  function writeOverview(){
+    overviewList.innerHTML=SLIDES.map((s,i)=>`<button class="overview-item ${current===i?"active":""}" type="button" data-slide="${i}" aria-current="${current===i?"true":"false"}"><img src="${esc(SLIDE_IMAGES[i])}" alt="" loading="lazy"><span><strong>${String(i+1).padStart(2,"0")}</strong> ${esc(s.title)} ${esc(s.italic||"")}</span></button>`).join("");
+  }
+  function closeNotes(focus=true){notesOpen=false;notes.hidden=true;if(focus)focusStage();}
+  function closeOverview(focus=true){overviewOpen=false;overview.hidden=true;if(focus)focusStage();}
+  function toggleNotes(){
+    if(notesOpen){closeNotes();return;}
+    if(overviewOpen)closeOverview(false);
+    notesOpen=true;notes.hidden=false;writeNotes();$("#close-notes").focus();
+  }
+  function toggleOverview(){
+    if(overviewOpen){closeOverview();return;}
+    if(notesOpen)closeNotes(false);
+    overviewOpen=true;overview.hidden=false;writeOverview();$("#close-overview").focus();
+  }
+  function draw(){
+    const s=SLIDES[current];
+    container.innerHTML=s.id===1?cover():s.id===5?service():s.id===8?care():raster(s);
+    container.classList.remove("appear");
+    void container.offsetWidth;
+    container.classList.add("appear");
+    status.textContent=`Slide ${s.id} de ${SLIDES.length}: ${s.title} ${s.italic||""}`;
+    if(location.hash!==`#${s.id}`)history.replaceState(null,"",`#${s.id}`);
+    try{localStorage.setItem("petiscos-deck-index",String(current));}catch{}
+    if(notesOpen)writeNotes();
+    if(overviewOpen)writeOverview();
+  }
+  function go(n){const to=Math.max(0,Math.min(SLIDES.length-1,n));if(to!==current){current=to;draw();}}
+  function next(){go(current+1);}
+  function previous(){go(current-1);}
+  function fullscreen(){
+    if(document.fullscreenElement){document.exitFullscreen?.().catch(()=>{});return;}
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  }
+  function showHelp(){if(!help.open)help.showModal();}
+  $("#close-notes").addEventListener("click",()=>closeNotes());
+  $("#close-overview").addEventListener("click",()=>closeOverview());
+  $("#close-help").addEventListener("click",()=>help.close());
+  overviewList.addEventListener("click",event=>{
+    const button=event.target.closest("[data-slide]");
+    if(!button)return;
+    const n=Number(button.dataset.slide);
+    closeOverview(false);go(n);focusStage();
+  });
+  window.addEventListener("keydown",event=>{
+    if(event.altKey||event.ctrlKey||event.metaKey)return;
+    if(event.key==="Escape"){if(notesOpen)closeNotes();if(overviewOpen)closeOverview();return;}
+    if(help.open)return;
+    if(event.target.closest("button,input,select,textarea,[contenteditable]"))return;
+    switch(event.key){
+      case "ArrowRight":case "PageDown":case " ":event.preventDefault();next();return;
+      case "ArrowLeft":case "PageUp":case "Backspace":event.preventDefault();previous();return;
+      case "Home":event.preventDefault();go(0);return;
+      case "End":event.preventDefault();go(SLIDES.length-1);return;
+      case "?":showHelp();return;
+    }
+    const key=event.key.toLowerCase();
+    if(key==="f")fullscreen();
+    else if(key==="s"||key==="r")toggleNotes();
+    else if(key==="n")toggleOverview();
+  });
+  let touchStart=null;
+  stage.addEventListener("touchstart",event=>{touchStart=event.changedTouches[0].clientX;},{passive:true});
+  stage.addEventListener("touchend",event=>{
+    if(touchStart===null)return;
+    const dx=event.changedTouches[0].clientX-touchStart;
+    touchStart=null;
+    if(Math.abs(dx)>55)dx<0?next():previous();
+  },{passive:true});
+  stage.addEventListener("touchcancel",()=>{touchStart=null;},{passive:true});
+  window.addEventListener("hashchange",()=>{
+    const n=Number(location.hash.substring(1));
+    if(Number.isInteger(n)&&n>=1&&n<=SLIDES.length&&n!==current+1){current=n-1;draw();}
+  });
+  let saved=0;
+  try{saved=Number(localStorage.getItem("petiscos-deck-index"))||0;}catch{}
+  const hash=Number(location.hash.substring(1));
+  current=Number.isInteger(hash)&&hash>=1&&hash<=SLIDES.length?hash-1:Math.max(0,Math.min(SLIDES.length-1,saved));
+  draw();
+})();

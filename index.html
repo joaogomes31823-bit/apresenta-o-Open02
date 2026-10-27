@@ -1,43 +1,8 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#120b08">
-  <meta name="description" content="Petiscos na espera: nove slides sobre acolhimento, atendimento e experiência do cliente em uma pizzaria.">
-  <title>Petiscos na espera — Apresentação completa</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./deck.js" defer></script>
-</head>
-<body>
-  <main class="theater" aria-label="Apresentação Petiscos na espera">
-    <div class="stage" id="stage" tabindex="-1" role="region" aria-label="Slide atual" aria-roledescription="apresentação" aria-describedby="keyboard-help">
-      <div id="slide-content" class="slide-content"></div>
-    </div>
-    <p id="slide-status" role="status" aria-live="polite" class="sr-only"></p>
-    <p id="keyboard-help" class="sr-only">Use as setas do teclado ou a barra de espaço para mudar de slide. Pressione N para a visão geral, S para o roteiro, F para tela cheia e interrogação para ajuda. No celular, deslize horizontalmente.</p>
-  </main>
-  <aside id="speaker" class="side-panel" aria-label="Roteiro de apresentação" hidden>
-    <header class="panel-header"><h2>Roteiro de apresentação</h2><button id="close-notes" type="button" aria-label="Fechar roteiro">Fechar ×</button></header>
-    <div id="speech-content"></div>
-  </aside>
-  <aside id="overview" class="side-panel overview" aria-label="Visão geral dos slides" hidden>
-    <header class="panel-header"><h2>Todos os slides</h2><button id="close-overview" type="button" aria-label="Fechar visão geral">Fechar ×</button></header>
-    <div id="overview-list" class="overview-list"></div>
-  </aside>
-  <dialog id="shortcuts" aria-label="Atalhos da apresentação">
-    <header class="panel-header"><h2>Atalhos</h2><button id="close-help" type="button">Fechar ×</button></header>
-    <p><b>← / →, Page Up / Page Down</b> — navegar</p>
-    <p><b>Espaço</b> — avançar</p>
-    <p><b>Home / End</b> — primeiro / último</p>
-    <p><b>N</b> — visão geral</p>
-    <p><b>S / R</b> — roteiro do slide</p>
-    <p><b>F</b> — tela cheia</p>
-    <p><b>?</b> — ajuda</p>
-    <p>No celular, deslize para mudar de slide.</p>
-  </dialog>
-</body>
-</html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#120b08"><meta name="description" content="Petiscos na espera — apresentação interativa sobre acolhimento no atendimento de pizzaria."><title>Petiscos na espera — Apresentação completa</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css"></head>
+<body><div class="theater"><header class="topbar"><div class="brand"><span class="brand-icon">P.</span><div><b>Petiscos na espera</b><small>Apresentação completa</small></div></div><div class="top-actions"><button class="icon-button" id="grid" type="button" title="Visão geral (N)" aria-pressed="false" aria-label="Visão geral">▦</button><button class="icon-button" id="notes" type="button" title="Fala e gestos (S)" aria-pressed="false" aria-label="Notas da apresentação">☷</button><button class="icon-button" id="fullscreen" type="button" title="Tela cheia (F)" aria-label="Tela cheia">⛶</button><button class="icon-button" id="help" type="button" title="Atalhos" aria-label="Atalhos">?</button></div></header>
+<main><div class="stage" id="stage" role="region" aria-label="Slides da apresentação" aria-roledescription="carousel"><div id="slide-content" class="slide-content" aria-live="off"></div></div><p id="slide-status" class="sr-only" role="status" aria-live="polite"></p></main>
+<footer class="controls"><button class="nav-button" id="prev" type="button" aria-label="Slide anterior">← <span>Anterior</span></button><div class="control-middle"><span id="slide-counter">01 / 09</span><div class="progress-track"><div id="progress"></div></div></div><button class="nav-button" id="next" type="button" aria-label="Próximo slide"><span>Próximo</span> →</button></footer>
+<aside class="side-panel" id="speaker" hidden aria-label="Notas para apresentar"><div class="side-header"><h2>Roteiro de apresentação</h2><button id="close-notes" class="icon-button" aria-label="Fechar notas">×</button></div><div id="speech-content"></div></aside>
+<div class="overview" id="overview" hidden aria-label="Visão geral dos slides"><div class="side-header"><h2>Todos os slides</h2><button id="close-overview" class="icon-button" aria-label="Fechar visão geral">×</button></div></div>
+<dialog id="shortcuts"><div class="side-header"><h2>Atalhos</h2><button id="close-help" class="icon-button" aria-label="Fechar">×</button></div><p><b>← / →</b> slide anterior / próximo</p><p><b>Espaço</b> avançar</p><p><b>Home / End</b> início / final</p><p><b>F</b> tela cheia</p><p><b>N</b> ver todos os slides</p><p><b>S / R</b> roteiro e gestos</p></dialog></div><script defer src="./deck.js"></script></body></html>
